@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.app.dao.Data_dictionaryMapper">
+<!-- 所属平台（public List<DataDictionary> getlistByid(@Param("typeCode") String typeCode);） -->
+	<select id="getlistByid" parameterType="String" resultType="com.example.app.entity.DataDictionary">
+        SELECT * FROM `data_dictionary` WHERE typeCode = #{typeCode}
+	</select>
+<!-- 所有状态public List<DataDictionary> getStatus(@Param("typecode") String typecode); -->
+	<select id="getStatus" parameterType="String" resultType="com.example.app.entity.DataDictionary">
+        SELECT * FROM `data_dictionary` WHERE typeCode = #{typecode}
+	</select>
+
+</mapper>

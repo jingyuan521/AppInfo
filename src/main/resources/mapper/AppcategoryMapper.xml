@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 三级菜单 (	public List<AppCategory> getListByid(@Param("id") Integer id );)-->
+<mapper namespace="com.example.app.dao.AppcategoryMapper">
+	<select id="getListByid" parameterType="Integer" resultType="com.example.app.entity.AppCategory">
+	select id,categoryCode,categoryName from app_category 
+		<trim prefix="where" prefixOverrides="and | or">
+			<if test="id != null">
+				and parentId = #{id}
+			</if>
+			<if test="id == null">
+				and parentId is null
+			</if>
+		</trim>
+	</select>
+	
+	
+</mapper>

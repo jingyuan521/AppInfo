@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.app.dao.AppVersionMapper">
+<!-- 查询app版本信息public List<AppVersionMapper> getAppVersionList(@Param("vid") Integer vid); -->
+	<select id="getAppVersionList" parameterType="com.example.app.entity.AppVersion" resultType="com.example.app.entity.AppVersion">
+		select v.*,
+			(select a.softwareName from app_info a where a.id=v.appId ) as appName,
+			(select valueName from data_dictionary d where  v.publishStatus=d.valueId AND d.typeCode='PUBLISH_STATUS') as publishStatusName
+			from  app_version  v
+		<trim prefix="where" prefixOverrides="and | or">
+			<if test="vid != null">
+				and v.appId = #{vid}
+			</if>
+		</trim>
+		order by v.creationDate DESC
+	</select>
+	<!-- 根据id获取版本信息 public AppVersion getAppVersionById(@Param("id")Integer id);-->
+	<select id="getAppVersionById" parameterType="com.example.app.entity.AppVersion" resultType="com.example.app.entity.AppVersion">
+         select * from app_version where id = #{id}
+ 
+	</select>
+	
+	
+	
+</mapper>
