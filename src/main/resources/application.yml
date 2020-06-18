@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,3 +27,5 @@ mybatis:
       #    mode: LEGACYHTML5
       #    prefix: classpath:/templates/
       #    suffix: .html
+server:
+  port: 8088

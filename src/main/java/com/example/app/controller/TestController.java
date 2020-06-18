@@ -4,6 +4,7 @@ import com.example.app.entity.AppInfo;
 import com.example.app.entity.DTO.AppinfoDto;
 import com.example.app.service.AppInfoService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 @Controller
 @RequestMapping("test")
+@CrossOrigin
 public class TestController {
     @Resource
     private AppInfoService appInfoService;
